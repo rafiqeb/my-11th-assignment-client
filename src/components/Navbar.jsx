@@ -11,6 +11,12 @@ const Navbar = () => {
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='volentear'>All Volunteer</NavLink></li>
     </>
+
+    const links2 = <>
+        <li><Link to='/volentearNeed'>Add Volunteer need</Link></li>
+        <li><Link to='/myPosts'>Manage My Posts</Link></li>
+    </>
+
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -36,24 +42,36 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <a className="btn btn-ghost text-xl">Care Bridge</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {links}
                     </ul>
                 </div>
-                <div className="navbar-end space-x-6">
+                <div className="navbar-end space-x-4">
                     <div>
                         <div>
-                            {user && user?.photoURL ? (<img 
-                            referrerPolicy="no-referrer" className="w-[40px] h-[40px] rounded-full" src={user.photoURL} alt="" />) : (<p className="text-4xl"><FaUserCircle /></p>)}
+                            {user && user?.photoURL ? (<img
+                                referrerPolicy="no-referrer" className="w-[40px] h-[40px] rounded-full" src={user.photoURL} alt="" />) : (<p className="text-4xl"><FaUserCircle /></p>)}
                         </div>
                     </div>
                     <div>
-                    {
-                        user && user?.email ? (<button onClick={logOut} className="btn btn-primary">Logout</button>) : (<Link to='/login' className="btn btn-primary">Login</Link>)
-                    }
+                        {
+                            user && user?.email ? (<button onClick={logOut} className="btn btn-primary">Logout</button>) : (<Link to='/login' className="btn btn-primary">Login</Link>)
+                        }
+                    </div>
+                    <div>
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost">
+                                <p>My Profile</p>
+                            </div>
+                            <ul
+                                tabIndex={0}
+                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                                {links2}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

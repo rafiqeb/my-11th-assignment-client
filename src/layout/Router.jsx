@@ -6,6 +6,8 @@ import Home from "../pages/Home";
 import AllVolentear from "../pages/AllVolentear";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
+import AddVolenter from "../pages/AddVolenter";
+import MyPosts from "../pages/MyPosts";
 
   const router = createBrowserRouter([
     {
@@ -19,6 +21,14 @@ import Register from "../authentication/Register";
         {
             path: 'volentear',
             element: <AllVolentear></AllVolentear>
+        },
+        {
+          path: 'volentearNeed',
+          element: <AddVolenter></AddVolenter>
+        },
+        {
+          path: 'myPosts',
+          element: <MyPosts></MyPosts>
         },
         {
             path: 'login',
