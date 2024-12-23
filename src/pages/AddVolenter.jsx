@@ -19,12 +19,14 @@ const AddVolenter = () => {
         const location = form.location.value;
         const volunteer = form.volunteer.value;
         const deadline = form.deadline.value;
+        const name = form.name.value;
         const email = form.email.value;
-
-        const formData = { thumbnail, title, description, category, location, volunteer, deadline, email }
-
-        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/volunteers`, formData)
         
+
+        const formData = { thumbnail, title, description, category, location, volunteer, deadline, name, email }
+
+        const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/volunteers`, formData)
+
         if (data.insertedId) {
             Swal.fire({
                 title: 'Success!',
@@ -76,6 +78,16 @@ const AddVolenter = () => {
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                         <div>
+                            <h3 className="text-lg font-semibold">Organizer name:</h3>
+                            <input type="text" name="name" placeholder="Organizer name" defaultValue={user?.displayName}
+                                className="px-4 py-2 rounded-lg w-full border border-blue-300" />
+                        </div>
+                        <div>
+                            <h3 className="text-lg font-semibold">Organizer email:</h3>
+                            <input type="email" name="email" placeholder="User email" defaultValue={user?.email}
+                                className="px-4 py-2 rounded-lg w-full border border-blue-300" />
+                        </div>
+                        <div>
                             <h3 className="text-lg font-semibold">Deadline:</h3>
                             <DatePicker
                                 type='text' name="deadline"
@@ -83,11 +95,6 @@ const AddVolenter = () => {
                                 onChange={date => setStartDate(date)}
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300">
                             </DatePicker>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold">User email:</h3>
-                            <input type="email" name="email" placeholder="User email" defaultValue={user?.email}
-                                className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                     </div>
                     <input type="submit" value="Submit" className="px-4 py-1 w-full rounded-full bg-orange-400 mt-8 font-bold text-white" />
