@@ -2,12 +2,14 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../authentication/AuthProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
+import Swal from 'sweetalert2'
 
 
 const AddVolenter = () => {
     const { user } = useContext(AuthContext)
     const [startDate, setStartDate] = useState(new Date());
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
         const thumbnail = form.thumbnail.value;
@@ -18,7 +20,20 @@ const AddVolenter = () => {
         const volunteer = form.volunteer.value;
         const deadline = form.deadline.value;
         const email = form.email.value;
-        console.log({thumbnail, title, description, category, location, volunteer, deadline, email})
+
+        const formData = { thumbnail, title, description, category, location, volunteer, deadline, email }
+
+        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/volunteers`, formData)
+        
+        if (data.insertedId) {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Add volunteer needs successfully',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            })
+        }
+        form.reset()
     }
     return (
         <div>
@@ -62,9 +77,11 @@ const AddVolenter = () => {
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">Deadline:</h3>
-                            <DatePicker 
-                            type='text' name="deadline" placeholderText='date'
-                            className="px-4 py-2 rounded-lg w-full border border-blue-300">
+                            <DatePicker
+                                type='text' name="deadline"
+                                selected={startDate}
+                                onChange={date => setStartDate(date)}
+                                className="px-4 py-2 rounded-lg w-full border border-blue-300">
                             </DatePicker>
                         </div>
                         <div>

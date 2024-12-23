@@ -8,6 +8,9 @@ import Login from "../authentication/Login";
 import Register from "../authentication/Register";
 import AddVolenter from "../pages/AddVolenter";
 import MyPosts from "../pages/MyPosts";
+import Volunteer from "../components/Volunteer";
+import DetailsPage from "../components/DetailsPage";
+import BeVolunteer from "../components/BeVolunteer";
 
   const router = createBrowserRouter([
     {
@@ -16,11 +19,28 @@ import MyPosts from "../pages/MyPosts";
       children: [
         {
             path: '/',
-            element: <Home></Home>
+            element: <Home></Home>,
+            children: [
+              {
+                path: '/',
+                element: <Volunteer></Volunteer>,
+                loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/volunteers`)
+              }
+            ]
         },
         {
             path: 'volentear',
-            element: <AllVolentear></AllVolentear>
+            element: <AllVolentear></AllVolentear>,
+            loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/volunteers`)
+        },
+        {
+          path: '/details/:id',
+          element: <DetailsPage></DetailsPage>,
+          loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/volunteers/${params.id}`)
+        },
+        {
+          path: 'beVolunteer',
+          element: <BeVolunteer></BeVolunteer>
         },
         {
           path: 'volentearNeed',
