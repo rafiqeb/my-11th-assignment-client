@@ -29,7 +29,7 @@ const DetailsPage = () => {
                         <p>Deadline: {deadline}</p>
                     </div>
                     <div className="card-actions justify-end">
-                        <Link to='/beVolunteer'>
+                        <Link to={`/beVolunteer/${_id}`}>
                             <button className="btn btn-warning">Be a Volunteer</button>
                         </Link>
                     </div>

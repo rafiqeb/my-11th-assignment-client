@@ -12,6 +12,8 @@ import Volunteer from "../components/Volunteer";
 import DetailsPage from "../components/DetailsPage";
 import BeVolunteer from "../components/BeVolunteer";
 import PrivateRoute from "../privateRoute/PrivateRoute";
+import UpdatePost from "../components/UpdatePost";
+
 
   const router = createBrowserRouter([
     {
@@ -40,8 +42,9 @@ import PrivateRoute from "../privateRoute/PrivateRoute";
           loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/volunteers/${params.id}`)
         },
         {
-          path: 'beVolunteer',
-          element: <BeVolunteer></BeVolunteer>
+          path: 'beVolunteer/:id',
+          element: <PrivateRoute><BeVolunteer></BeVolunteer></PrivateRoute>,
+          loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/volunteers/${params.id}`)
         },
         {
           path: 'volentearNeed',
@@ -49,7 +52,12 @@ import PrivateRoute from "../privateRoute/PrivateRoute";
         },
         {
           path: 'myPosts',
-          element: <PrivateRoute><MyPosts></MyPosts></PrivateRoute>
+          element: <PrivateRoute><MyPosts></MyPosts></PrivateRoute>,
+        },
+        {
+          path: 'updatePost/:id',
+          element: <UpdatePost></UpdatePost>,
+          loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/volunteers/${params.id}`)
         },
         {
             path: 'login',

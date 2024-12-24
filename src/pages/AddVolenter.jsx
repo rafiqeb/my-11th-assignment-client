@@ -4,11 +4,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom";
 
 
 const AddVolenter = () => {
+    const navigate = useNavigate()
     const { user } = useContext(AuthContext)
     const [startDate, setStartDate] = useState(new Date());
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -17,7 +20,7 @@ const AddVolenter = () => {
         const description = form.description.value;
         const category = form.category.value;
         const location = form.location.value;
-        const volunteer = form.volunteer.value;
+        const volunteer = parseInt(form.volunteer.value);
         const deadline = form.deadline.value;
         const name = form.name.value;
         const email = form.email.value;
@@ -34,6 +37,7 @@ const AddVolenter = () => {
                 icon: 'success',
                 confirmButtonText: 'Ok'
             })
+            navigate('/myPosts')
         }
         form.reset()
     }
@@ -74,7 +78,7 @@ const AddVolenter = () => {
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">No. of volunteers:</h3>
-                            <input type="text" name="volunteer" placeholder="volunteer"
+                            <input type="number" name="volunteer" placeholder="volunteer number"
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                         <div>

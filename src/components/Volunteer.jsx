@@ -9,7 +9,7 @@ const Volunteer = () => {
     const data = useLoaderData()
 
     useEffect(() => {
-        const sorted = [...data].sort((a, b) => a.deadline - b.deadline)
+        const sorted = [...data].sort((a, b) => new Date(b.deadline) - new Date(a.deadline))
         setVolunteers(sorted.slice(0, 6))
     }, [data])
 
@@ -19,7 +19,7 @@ const Volunteer = () => {
                 <h1 className="text-3xl font-bold text-center">Volunteer Needs</h1>
                 <p className="text-lg font-semibold max-w-xl mx-auto text-center mt-3 mb-6">A volunteer website connects individuals with opportunities to make a positive impact in their communities.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center p-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-2">
                 {
                     volunteers.map(item => <Card key={item._id} card={item}></Card>)
                 }
