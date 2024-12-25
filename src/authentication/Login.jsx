@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import Swal from 'sweetalert2'
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
@@ -43,6 +44,7 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet><title>Sign in page</title></Helmet>
             <div>
                 <h2 className="text-3xl font-bold text-center mt-6">Login your account</h2>
                 <div className="max-w-lg mx-auto bg-base-200 p-10 shadow-xl rounded-xl">

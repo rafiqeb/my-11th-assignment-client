@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../authentication/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 
 const BeVolunteer = () => {
@@ -24,9 +25,6 @@ const BeVolunteer = () => {
         const suggestion = form.suggestion.value;
         const status = form.status.value;
         const postId = _id
-        // const thumbnail = thumbnail;
-        // const title = title;
-        // const category = category
 
         const currentDate = new Date();
         const [month, day, year] = deadline.split("/");
@@ -38,7 +36,7 @@ const BeVolunteer = () => {
         // conditional
         if (currentDate > deadlineDate) return toast.error('Deadline allready cross')
 
-        const requestData = { name: volunteer_name, email: volunteer_email, suggestion, status, postId, thumbnail, title, category };
+        const requestData = { name: volunteer_name, email: volunteer_email, suggestion, status, postId, thumbnail, title, category, organizer_name: name, organizer_email: email };
         
         //  try catch axios
         try{
@@ -54,6 +52,7 @@ const BeVolunteer = () => {
 
     return (
         <div>
+            <Helmet><title>Volunteer Request</title></Helmet>
             <h2 className="text-3xl font-bold text-center mt-5 mb-4">Volunteer Request</h2>
             <div className="p-10 max-w-4xl mx-auto bg-slate-200 shadow-xl rounded-lg">
                 <form onSubmit={handleRequest}>

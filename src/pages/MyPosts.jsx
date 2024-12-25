@@ -6,6 +6,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import MyRequest from "../components/myRequest";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -55,6 +56,7 @@ const MyPosts = () => {
 
     return (
         <div>
+            <Helmet><title>My Post and Request</title></Helmet>
             <h2 className="text-3xl font-bold text-center mt-6">Manage My volunteer need post</h2>
             <div className="max-w-4xl mx-auto bg-base-200 rounded-lg mt-8">
                 <div className="overflow-x-auto">

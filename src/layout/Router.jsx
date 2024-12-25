@@ -13,12 +13,14 @@ import DetailsPage from "../components/DetailsPage";
 import BeVolunteer from "../components/BeVolunteer";
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import UpdatePost from "../components/UpdatePost";
+import ErrorPage from "../pages/ErrorPage";
 
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
             path: '/',
@@ -33,8 +35,7 @@ import UpdatePost from "../components/UpdatePost";
         },
         {
             path: 'volentear',
-            element: <AllVolentear></AllVolentear>,
-            loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/volunteers`)
+            element: <AllVolentear></AllVolentear>
         },
         {
           path: '/details/:id',

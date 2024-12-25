@@ -8,12 +8,16 @@ import {
 import router from './layout/Router.jsx';
 import AuthProvider from './authentication/AuthProvider.jsx';
 import toast, { Toaster } from 'react-hot-toast';
+import { HelmetProvider } from 'react-helmet-async';
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-      <Toaster />
-    </AuthProvider>
+    <HelmetProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+        <Toaster />
+      </AuthProvider>
+    </HelmetProvider>
   </StrictMode>,
 )

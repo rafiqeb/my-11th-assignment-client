@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const AddVolenter = () => {
@@ -43,6 +44,7 @@ const AddVolenter = () => {
     }
     return (
         <div>
+            <Helmet><title>Add Volunteer</title></Helmet>
             <h2 className="text-3xl font-bold text-center mt-5 mb-4">Add Volunteer</h2>
             <div className="p-10 max-w-4xl mx-auto bg-slate-200 shadow-xl rounded-lg">
                 <form onSubmit={handleSubmit}>
