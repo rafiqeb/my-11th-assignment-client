@@ -85,12 +85,12 @@ const AddVolenter = () => {
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">Organizer name:</h3>
-                            <input type="text" name="name" placeholder="Organizer name" defaultValue={user?.displayName}
+                            <input type="text" name="name" placeholder="Organizer name" defaultValue={user?.displayName} readOnly
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">Organizer email:</h3>
-                            <input type="email" name="email" placeholder="User email" defaultValue={user?.email}
+                            <input type="email" name="email" placeholder="User email" defaultValue={user?.email} readOnly
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                         <div>

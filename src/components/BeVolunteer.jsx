@@ -59,22 +59,22 @@ const BeVolunteer = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <h3 className="text-lg font-semibold">Thumbnail:</h3>
-                            <input type="text" name="thumbnail" defaultValue={thumbnail} placeholder="logo url"
+                            <input type="text" name="thumbnail" defaultValue={thumbnail} placeholder="logo url" readOnly
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">Post title:</h3>
                             <input type="text" name="title" placeholder="title" defaultValue={title}
-                                className="px-4 py-2 rounded-lg w-full border border-blue-300" />
+                                className="px-4 py-2 rounded-lg w-full border border-blue-300" readOnly />
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">Description:</h3>
-                            <input type="text" name="description" placeholder="discription" defaultValue={description}
+                            <input type="text" name="description" placeholder="discription" defaultValue={description} readOnly
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">Category:</h3>
-                            <select className="px-4 py-2 rounded-lg w-full border border-blue-300" name="category" defaultValue={category}>
+                            <select className="px-4 py-2 rounded-lg w-full border border-blue-300" name="category" defaultValue={category} readOnly>
                                 <option disabled selected>category</option>
                                 <option>Healthcare</option>
                                 <option>Education</option>
@@ -83,28 +83,28 @@ const BeVolunteer = () => {
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">Location:</h3>
-                            <input type="text" name="location" placeholder="location" defaultValue={location}
+                            <input type="text" name="location" placeholder="location" defaultValue={location} readOnly
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">No. of volunteers:</h3>
-                            <input type="number" name="volunteer" placeholder="volunteer" defaultValue={volunteer}
+                            <input type="number" name="volunteer" placeholder="volunteer" defaultValue={volunteer} readOnly
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">Organizer name:</h3>
-                            <input type="text" name="name" placeholder="Organizer name" defaultValue={name}
+                            <input type="text" name="name" placeholder="Organizer name" defaultValue={name} readOnly
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">Organizer email:</h3>
-                            <input type="email" name="email" placeholder="User email" defaultValue={email}
+                            <input type="email" name="email" placeholder="User email" defaultValue={email} readOnly
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">Deadline:</h3>
                             <DatePicker
-                                type='text' name="deadline"
+                                type='text' name="deadline" readOnly
                                 selected={startDate}
                                 onChange={date => setStartDate(date)}
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300">
@@ -114,12 +114,12 @@ const BeVolunteer = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
                         <div>
                             <h3 className="text-lg font-semibold">User name:</h3>
-                            <input type="text" name="volunteer_name" placeholder="Organizer name" defaultValue={user?.displayName}
+                            <input type="text" name="volunteer_name" placeholder="Organizer name" readOnly defaultValue={user?.displayName}
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">User email:</h3>
-                            <input type="email" name="volunteer_email" placeholder="User email" defaultValue={user?.email}
+                            <input type="email" name="volunteer_email" placeholder="User email" defaultValue={user?.email} readOnly
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                         <div>
@@ -129,7 +129,7 @@ const BeVolunteer = () => {
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">Status:</h3>
-                            <input type="text" name="status" placeholder="status" defaultValue={'requested'}
+                            <input type="text" name="status" placeholder="status" defaultValue={'requested'} readOnly
                                 className="px-4 py-2 rounded-lg w-full border border-blue-300" />
                         </div>
                     </div>
