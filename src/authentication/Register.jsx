@@ -10,6 +10,8 @@ const Register = () => {
     const { creatUser, updateUserProfile, setUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+
     const handleRegister = async (e) => {
         e.preventDefault();
         const form = e.target
@@ -17,6 +19,12 @@ const Register = () => {
         const email = form.email.value;
         const photo = form.photo.value;
         const password = form.password.value;
+
+        // password regex
+        if (!passwordRegex.test(password)) {
+            toast.error('Password must be at least 6 characters long, contain an uppercase letter, a lowercase letter, a number, and a special character')
+            return;
+        }
 
         try {
             const result = await creatUser(email, password)

@@ -11,7 +11,7 @@ const Card = ({ card }) => {
                 <div className="flex gap-4 items-center justify-center mt-6">
                     <figure>
                         <img
-                            className="w-20 rounded-full"
+                            className="w-20 h-20 rounded-full"
                             src={thumbnail}
                             alt="Shoes" />
                     </figure>

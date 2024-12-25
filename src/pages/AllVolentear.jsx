@@ -20,7 +20,7 @@ const AllVolentear = () => {
     
     return (
         <div className="mt-10">
-            <div className="flex justify-center items-center gap-16">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-16">
                 <div>
                     <select onChange={(e) => setFilter(e.target.value)} name="filter" id="filter" className="border p-4 rounded-lg">
                         <option value="">Category</option>

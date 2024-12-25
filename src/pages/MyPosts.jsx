@@ -77,7 +77,7 @@ const MyPosts = () => {
                                 myPosts.map((item) => (
                                     <tr key={item._id}>
                                         <th>
-                                            <img src={item.thumbnail} alt="" className="w-20 rounded-full" />
+                                            <img src={item.thumbnail} alt="" className="w-20 h-20 rounded-full" />
                                         </th>
                                         <td>{item.title}</td>
                                         <td>{item.deadline}</td>

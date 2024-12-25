@@ -1,8 +1,24 @@
-# React + Vite
+# Volunteer management project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The primary goal of a volunteer management project is to streamline and enhance the process of recruiting, coordinating, and managing volunteers. It aims to create a platform that simplifies communication, tracks volunteer efforts, and ensures efficient allocation of tasks. This project fosters community engagement by making it easier for organizations and volunteers to connect, collaborate, and achieve their shared goals.
+ 
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##   Key features of my project :
+
+- Simple sign-up process for volunteers.
+- Profile creation to highlight skills, availability, and interests.
+- Organizations can create, update, and manage events or projects.
+- Volunteers can sign up for tasks and view event details.
+- Generate reports to measure impact and recognize contributions.
+
+##   I have used this npm pakages
+
+- React router dom
+- Firebase
+- Tailwind css
+- React helmet
+- React icons
+
+## 🔗 Live links
+[Assignment-link](https://my-11th-assignment-c2db4.web.app/)
