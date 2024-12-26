@@ -37,7 +37,7 @@ const MyRequest = () => {
                         .then(data => {
                             if (data.deletedCount > 0) {
                                 Swal.fire({
-                                    title: "Deleted!",
+                                    title: "Remove!",
                                     text: "Your review has been deleted.",
                                     icon: "success"
                                 });
