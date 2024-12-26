@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import MyRequest from "../components/myRequest";
 import { Helmet } from "react-helmet-async";
+import { TfiLayoutGrid3Alt } from "react-icons/tfi";
+import { RiLayoutHorizontalFill } from "react-icons/ri";
 
 
 
@@ -64,11 +66,11 @@ const MyPosts = () => {
             <Helmet><title>My Post and Request</title></Helmet>
             <div className="flex justify-center items-center gap-6 mt-6">
                 <h2 className="text-3xl font-bold text-center">Manage My volunteer need post</h2>
-                <button onClick={handleToggle} className="btn btn-warning">{tableLayout ? 'X' : 'Y'}</button>
+                <button onClick={handleToggle} className="btn btn-warning text-3xl">{tableLayout ? (<TfiLayoutGrid3Alt/>) : (<RiLayoutHorizontalFill/>)}</button>
             </div>
             <div>
-                <div className="max-w-4xl mx-auto bg-base-200 rounded-lg mt-8">
-                    {tableLayout ? (
+                {tableLayout ? (
+                    <div className="max-w-4xl mx-auto bg-base-200 rounded-lg mt-8">
                         <div className="overflow-x-auto">
                             <table className="table">
                                 {/* head */}
@@ -108,32 +110,32 @@ const MyPosts = () => {
                                 </tbody>
                             </table>
                         </div>
-                    ) : (
-                        <div className="space-y-4 bg-base-300 p-4">
-                            {
-                                myPosts.map((item) => (<div key={item._id} className="flex flex-col md:flex-row gap-4 justify-between items-center">
-                                    <div className="flex items-center gap-6">
-                                        <img className="w-40 h-40 rounded-xl" src={item.thumbnail} alt="" />
-                                        <div>
-                                            <h2 className="text-2xl font-bold">{item.title}</h2>
-                                            <p className="font-semibold">{item.category}</p>
-                                        </div>
-                                    </div>
+                    </div>
+                ) : (
+                    <div className="space-y-6 p-4 max-w-4xl mx-auto">
+                        {
+                            myPosts.map((item) => (<div key={item._id} className="flex flex-col md:flex-row gap-4 justify-between items-center bg-base-300 rounded-xl p-4">
+                                <div className="flex items-center gap-6">
+                                    <img className="w-40 h-40 rounded-xl" src={item.thumbnail} alt="" />
                                     <div>
-                                        <p className="text-lg font-semibold">Organizer: {item.name}</p>
-                                        <p>Email: {item.email}</p>
+                                        <h2 className="text-2xl font-bold">{item.title}</h2>
+                                        <p className="font-semibold">{item.category}</p>
                                     </div>
-                                    <div>
-                                        <Link to={`/updatePost/${item._id}`}>
-                                            <button className="btn text-xl"><FaEdit /></button>
-                                        </Link>
-                                        <button onClick={() => handleDelete(item._id)} className="btn text-xl"><MdDeleteForever /></button>
-                                    </div>
-                                </div>))
-                            }
-                        </div>
-                    )}
-                </div>
+                                </div>
+                                <div>
+                                    <p className="text-lg font-semibold">Organizer: {item.name}</p>
+                                    <p>Email: {item.email}</p>
+                                </div>
+                                <div className="flex md:flex-col gap-5">
+                                    <Link to={`/updatePost/${item._id}`}>
+                                        <button className="btn text-xl"><FaEdit /></button>
+                                    </Link>
+                                    <button onClick={() => handleDelete(item._id)} className="btn text-xl"><MdDeleteForever /></button>
+                                </div>
+                            </div>))
+                        }
+                    </div>
+                )}
             </div>
             <MyRequest></MyRequest>
         </div>
