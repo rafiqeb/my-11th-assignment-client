@@ -4,21 +4,21 @@ import Card from "../components/Card";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
 import TableLayout from "../components/TableLayout";
+import { useQuery } from "@tanstack/react-query";
 
 
 const AllVolentear = () => {
-    const [volunteers, setVolunteers] = useState([])
     const [filter, setFilter] = useState('')
     const [search, setSearch] = useState('')
     const [tableLayout, setTableLayout] = useState(false);
 
-    useEffect(() => {
-        const fetchAllData = async () => {
-            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/all-volunteers?filter=${filter}&search=${search}`)
-            setVolunteers(data)
+    const { data: volunteers = [], isPending: loading, refetch } = useQuery({
+        queryKey: ['volunteers', filter, search],
+        queryFn: async () => {
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/all-volunteers?filter=${filter}&search=${search}`);
+            return res.data
         }
-        fetchAllData()
-    }, [filter, search])
+    })
 
     const handleToggle = () => {
         setTableLayout((prev) => !prev);
@@ -27,6 +27,11 @@ const AllVolentear = () => {
     return (
         <div className="mt-10">
             <Helmet><title>All volunteers</title></Helmet>
+            {loading && (
+                <div className="flex justify-center items-center min-h-screen">
+                    <span className="loading loading-spinner loading-lg"></span>
+                </div>
+            )}
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-16">
                 <div>
                     <select onChange={(e) => setFilter(e.target.value)} name="filter" id="filter" className="btn btn-accent">

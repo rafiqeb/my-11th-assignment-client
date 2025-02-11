@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Card from "./Card";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 
 const Volunteer = () => {
     const [volunteers, setVolunteers] = useState([])
-
     const data = useLoaderData()
 
     useEffect(() => {

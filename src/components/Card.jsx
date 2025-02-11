@@ -6,8 +6,8 @@ const Card = ({ card }) => {
     const { _id, title, thumbnail, description, category, location, volunteer, deadline } = card
 
     return (
-        <div>
-            <div className="card bg-base-300 shadow-xl">
+        <div className="transition-transform duration-300 hover:scale-105">
+            <div className="card bg-base-300 shadow-xl hover:bg-red-500 transition-colors duration-300">
                 <div className="flex gap-4 items-center justify-center mt-6">
                     <figure>
                         <img
@@ -29,7 +29,7 @@ const Card = ({ card }) => {
                     </div>
                     <div className="card-actions justify-end">
                         <Link to={`/details/${_id}`}>
-                            <button className="btn btn-primary">View Details</button>
+                            <button className="btn btn-outline border-0 border-b-2 border-orange-400 bg-slate-200 mt-6">View Details</button>
                         </Link>
                     </div>
                 </div>
