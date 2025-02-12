@@ -88,7 +88,7 @@ const MyRequest = () => {
                                             <p>{item.email}</p>
                                         </td>
                                         <td>
-                                            <button onClick={() => handleDelete(item._id)} className="btn">Cancel</button>
+                                            {item.status === 'Confirm' ? (<button disabled className="btn btn-outline btn-sm">Cancel</button>) : (<button onClick={() => handleDelete(item._id)} className="btn btn-outline btn-sm">Cancel</button>)}
                                         </td>
                                     </tr>
                                 ))
