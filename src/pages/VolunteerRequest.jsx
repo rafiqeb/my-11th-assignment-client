@@ -1,13 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../authentication/AuthProvider";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 
 const VolunteerRequest = () => {
     const { user } = useContext(AuthContext)
 
-    const {data: request = [], refetch} = useQuery({
+    const {data: request = [], isPending: loading, refetch} = useQuery({
         queryKey: ['request'],
         queryFn: async()=> {
             const res = await axios.get(`${import.meta.env.VITE_API_URL}/volunteer-request/${user?.email}`);
@@ -27,6 +28,7 @@ const VolunteerRequest = () => {
 
     return (
         <div>
+            <Helmet><title>Volunteer Request</title></Helmet>
             <div className="py-10">
                 <h2 className="text-3xl font-bold text-center mt-16">Volunteer Request post</h2>
             </div>

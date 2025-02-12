@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../authentication/AuthProvider";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
@@ -6,22 +6,20 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { useQuery } from "@tanstack/react-query";
 
 
 
 const MyPosts = () => {
     const { user } = useContext(AuthContext)
-    const [myPosts, setMyPosts] = useState([])
 
-
-    useEffect(() => {
-        fetchAllData()
-    }, [])
-
-    const fetchAllData = async () => {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/my-posts/${user?.email}`)
-        setMyPosts(data)
-    }
+    const {data: myPosts = [], isPending: loading, refetch} = useQuery({
+        queryKey: ['myPosts'],
+        queryFn: async()=> {
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/my-posts/${user?.email}`);
+            return res.data
+        }
+    })
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -56,7 +54,7 @@ const MyPosts = () => {
 
     return (
         <div>
-            <Helmet><title>My Post and Request</title></Helmet>
+            <Helmet><title>My Volunteer Need Post</title></Helmet>
             <div className="py-10">
                 <h2 className="text-3xl font-bold text-center mt-16">Manage My volunteer need post</h2>
             </div>

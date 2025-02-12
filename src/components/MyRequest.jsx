@@ -1,21 +1,21 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../authentication/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 
 const MyRequest = () => {
     const { user } = useContext(AuthContext)
-    const [request, setRequest] = useState([])
 
-    useEffect(() => {
-        fetchAllData()
-    }, [])
-
-    const fetchAllData = async () => {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/add-request/${user?.email}`)
-        setRequest(data)
-    }
+    const {data: request = [], refetch} = useQuery({
+        queryKey: ['request'],
+        queryFn: async()=> {
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/add-request/${user?.email}`);
+            return res.data
+        }
+    })
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -51,6 +51,7 @@ const MyRequest = () => {
 
     return (
         <div>
+            <Helmet><title>My Request Post</title></Helmet>
             <div className="py-10">
                 <h2 className="text-3xl font-bold text-center mt-16">Manage My Request post</h2>
             </div>
