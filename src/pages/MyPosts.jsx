@@ -5,7 +5,6 @@ import { FaEdit } from "react-icons/fa";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import MyRequest from "../components/myRequest";
 import { Helmet } from "react-helmet-async";
 
 
@@ -102,7 +101,6 @@ const MyPosts = () => {
                     </table>
                 </div>
             </div>
-            <MyRequest></MyRequest>
         </div>
     );
 };

@@ -1,53 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../authentication/AuthProvider";
 import axios from "axios";
-import Swal from "sweetalert2";
 
 
-const MyRequest = () => {
+const VolunteerRequest = () => {
     const { user } = useContext(AuthContext)
     const [request, setRequest] = useState([])
 
     useEffect(() => {
+        const fetchAllData = async () => {
+            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/volunteer-request/${user?.email}`)
+            setRequest(data)
+        }
         fetchAllData()
     }, [])
-
-    const fetchAllData = async () => {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/add-request/${user?.email}`)
-        setRequest(data)
-    }
-
-    const handleDelete = (id) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, remove it!"
-        })
-            .then((result) => {
-                if (result.isConfirmed) {
-
-                    fetch(`${import.meta.env.VITE_API_URL}/add-request/${id}`, {
-                        method: 'DELETE'
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.deletedCount > 0) {
-                                Swal.fire({
-                                    title: "Remove!",
-                                    text: "Your review has been deleted.",
-                                    icon: "success"
-                                });
-                                const remainingRequest = request.filter(post => post._id !== id)
-                                setRequest(remainingRequest)
-                            }
-                        })
-                }
-            });
-    }
 
     return (
         <div>
@@ -88,7 +54,7 @@ const MyRequest = () => {
                                             <p>{item.email}</p>
                                         </td>
                                         <td>
-                                            <button onClick={() => handleDelete(item._id)} className="btn">Cancel</button>
+                                            <button className="btn">Cancel</button>
                                         </td>
                                     </tr>
                                 ))
@@ -101,4 +67,4 @@ const MyRequest = () => {
     );
 };
 
-export default MyRequest;
+export default VolunteerRequest;

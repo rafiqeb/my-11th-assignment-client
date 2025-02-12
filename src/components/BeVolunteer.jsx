@@ -42,7 +42,7 @@ const BeVolunteer = () => {
         try {
             await axios.post(`${import.meta.env.VITE_API_URL}/add-request`, requestData)
             toast.success('Request added successfully')
-            navigate('/myPosts')
+            navigate('/my-request')
         }
         catch (error) {
             console.log(error)

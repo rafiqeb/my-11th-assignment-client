@@ -14,6 +14,8 @@ import BeVolunteer from "../components/BeVolunteer";
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import UpdatePost from "../components/UpdatePost";
 import ErrorPage from "../pages/ErrorPage";
+import MyRequest from "../components/MyRequest";
+import VolunteerRequest from "../pages/VolunteerRequest";
 
 
   const router = createBrowserRouter([
@@ -54,6 +56,14 @@ import ErrorPage from "../pages/ErrorPage";
         {
           path: 'myPosts',
           element: <PrivateRoute><MyPosts></MyPosts></PrivateRoute>,
+        },
+        {
+          path: 'my-request',
+          element: <PrivateRoute><MyRequest></MyRequest></PrivateRoute>
+        },
+        {
+          path: 'volunteer-request',
+          element: <PrivateRoute><VolunteerRequest></VolunteerRequest></PrivateRoute>
         },
         {
           path: 'updatePost/:id',

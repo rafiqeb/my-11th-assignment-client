@@ -33,6 +33,8 @@ const Navbar = () => {
         <li className="lg:hidden"><Link to='/volentear'>All Volunteer</Link></li>
         <li><Link to='/volentearNeed'>Add Volunteer need</Link></li>
         <li><Link to='/myPosts'>Manage My Posts</Link></li>
+        <li><Link to='/my-request'>My Request Posts</Link></li>
+        <li><Link to='/volunteer-request'>Volunteer Request Posts</Link></li>
     </>
 
     return (
@@ -79,7 +81,7 @@ const Navbar = () => {
                     </div>
                     <div>
                         {
-                            user && user?.email ? (<button onClick={logOut} className="btn btn-primary btn-sm">Logout</button>) : (<Link to='/login' className="btn btn-primary">Login</Link>)
+                            user && user?.email ? (<button onClick={logOut} className="btn btn-primary btn-sm">Logout</button>) : (<Link to='/login' className="btn btn-primary btn-sm">Login</Link>)
                         }
                     </div>
                     <div>
