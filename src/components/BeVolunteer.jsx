@@ -17,7 +17,7 @@ const BeVolunteer = () => {
 
     const [startDate, setStartDate] = useState(deadline);
 
-    const handleRequest = async(e) => {
+    const handleRequest = async (e) => {
         e.preventDefault();
         const form = e.target;
         const volunteer_name = form.volunteer_name.value;
@@ -31,20 +31,20 @@ const BeVolunteer = () => {
         const deadlineDate = new Date(year, month - 1, day);
 
         // chack volunteer need and request parmision
-        if(user?.email === email) return toast.error('Action not permited')
+        if (user?.email === email) return toast.error('Action not permited')
 
         // conditional
         if (currentDate > deadlineDate) return toast.error('Deadline allready cross')
 
         const requestData = { name: volunteer_name, email: volunteer_email, suggestion, status, postId, thumbnail, title, category, organizer_name: name, organizer_email: email };
-        
+
         //  try catch axios
-        try{
+        try {
             await axios.post(`${import.meta.env.VITE_API_URL}/add-request`, requestData)
             toast.success('Request added successfully')
             navigate('/myPosts')
         }
-        catch(error){
+        catch (error) {
             console.log(error)
             toast.error(error.message)
         }
@@ -53,7 +53,9 @@ const BeVolunteer = () => {
     return (
         <div>
             <Helmet><title>Volunteer Request</title></Helmet>
-            <h2 className="text-3xl font-bold text-center mt-5 mb-4">Volunteer Request</h2>
+            <div className="py-10">
+                <h2 className="text-3xl font-bold text-center mt-16">Volunteer Request</h2>
+            </div>
             <div className="p-10 max-w-4xl mx-auto bg-slate-200 shadow-xl rounded-lg">
                 <form onSubmit={handleRequest}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

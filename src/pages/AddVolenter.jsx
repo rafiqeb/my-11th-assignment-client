@@ -25,7 +25,7 @@ const AddVolenter = () => {
         const deadline = form.deadline.value;
         const name = form.name.value;
         const email = form.email.value;
-        
+
 
         const formData = { thumbnail, title, description, category, location, volunteer, deadline, name, email }
 
@@ -45,7 +45,9 @@ const AddVolenter = () => {
     return (
         <div>
             <Helmet><title>Add Volunteer</title></Helmet>
-            <h2 className="text-3xl font-bold text-center mt-5 mb-4">Add Volunteer</h2>
+            <div className="py-10">
+                <h2 className="text-3xl font-bold text-center mt-16">Add Volunteer</h2>
+            </div>
             <div className="p-10 max-w-4xl mx-auto bg-slate-200 shadow-xl rounded-lg">
                 <form onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

@@ -37,7 +37,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar max-w-screen-xl fixed z-10 bg-opacity-80 bg-base-100">
                 <div className="navbar-start">
                     <div className="btn btn-sm">
                         <label className="swap swap-rotate animate-[spin_4s_linear_infinite]">
@@ -79,12 +79,12 @@ const Navbar = () => {
                     </div>
                     <div>
                         {
-                            user && user?.email ? (<button onClick={logOut} className="btn btn-primary">Logout</button>) : (<Link to='/login' className="btn btn-primary">Login</Link>)
+                            user && user?.email ? (<button onClick={logOut} className="btn btn-primary btn-sm">Logout</button>) : (<Link to='/login' className="btn btn-primary">Login</Link>)
                         }
                     </div>
                     <div>
                         <div className="dropdown dropdown-end">
-                            <div tabIndex={0} role="button" className="btn btn-ghost">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-sm">
                                 <p>My Profile</p>
                             </div>
                             <ul

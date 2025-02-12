@@ -8,10 +8,10 @@ const DetailsPage = () => {
     const { _id, title, thumbnail, description, category, location, volunteer, deadline } = data
 
     return (
-        <div className="flex justify-center items-center mt-10">
+        <div className="flex justify-center items-center py-16">
             <Helmet><title>Volunteer Detail</title></Helmet>
-            <div className="card bg-base-300 shadow-xl max-w-xl p-4">
-                <div className="flex gap-6 md:gap-16 items-center justify-center mt-4">
+            <div className="card bg-base-300 shadow-xl max-w-xl p-4 mt-8">
+                <div className="flex gap-6 md:gap-16 items-center justify-center">
                     <figure>
                         <img
                             className="w-28 rounded-full"

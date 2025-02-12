@@ -58,7 +58,9 @@ const MyPosts = () => {
     return (
         <div>
             <Helmet><title>My Post and Request</title></Helmet>
-            <h2 className="text-3xl font-bold text-center">Manage My volunteer need post</h2>
+            <div className="py-10">
+                <h2 className="text-3xl font-bold text-center mt-16">Manage My volunteer need post</h2>
+            </div>
             <div className="max-w-5xl mx-auto bg-base-200 rounded-lg mt-8">
                 <div className="overflow-x-auto">
                     <table className="table">
